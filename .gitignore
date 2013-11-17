@@ -2,5 +2,11 @@
 thumbs.db
 environment/config
 environment/workspace
+environment/stack/slimerjs
+environment/stack/node
+environment/stack/ruby
+environment/stack/phantomjs
+environment/stack/tools
+environment/stack/casperjs
 temp
 node_modules
