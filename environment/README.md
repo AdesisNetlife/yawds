@@ -1,4 +1,4 @@
-# YAWDS
+# yawds
 
 Another yet Web development stack environment for unlucky Web developers
 
