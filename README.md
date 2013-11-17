@@ -10,6 +10,20 @@ A modern and portable Web development stack environment for the f*ing Windows OS
 
 If you are a lucky developer, you should use [FrontStack](https://github.com/frontstack/frontstack) instead of YAWDS
 
+## Installation
+
+1. [Download][1] the latest version
+
+2. Uncompress the `zip` wherever you want
+
+3. Run `start.cmd`
+
+4. Start coding!
+
+## Customize it for your project
+
+`TODO`
+
 ## Features
 
 - Easy to use and install
@@ -41,20 +55,6 @@ Aditionally, the following tools binaries are provided
 - Bash with *UNIX binaries (port to Win32)
 
 See [PACKAGES][2] file for more information about versions
-
-## Installation
-
-1. [Download][1] the latest version
-
-2. Uncompress the `zip` wherever you want
-
-3. Run `start.cmd`
-
-4. Start coding!
-
-## Customize it for your project
-
-`TODO`
 
 ## TODO/WISH list
 
