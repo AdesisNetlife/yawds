@@ -3,7 +3,8 @@ CLS
 
 :: load environment variables and config
 CALL "%~dp0set_env.bat"
-CALL "%~dp0read_config.bat"
+:: read and load config from ini files
+CALL "%~dp0env_config.bat"
 
 IF DEFINED YAWDS_CONF_GENERAL_CONSOLE_COLOR (
 	COLOR %YAWDS_CONF_GENERAL_CONSOLE_COLOR%
@@ -14,10 +15,12 @@ IF DEFINED YAWDS_CONF_GENERAL_PROMPT (
 
 :: environement setup process, if required
 CALL "%~dp0setup.bat"
+:: check OS requisites
+CALL "%~dp0requisites.bat"
+:: set user-specific config
 CALL "%~dp0config.bat"
-
-:: CALL "%~dp0scripts\install.bat"
-:: CALL "%~dp0scripts\provision.bat"
+:: performs the environment provisioning if required
+CALL "%~dp0provision.bat"
 
 IF NOT EXIST "%YAWDS_HOME%\workspace" (
 	MKDIR "%YAWDS_HOME%\workspace"

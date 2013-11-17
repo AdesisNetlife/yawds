@@ -1,4 +1,5 @@
 @ECHO OFF
 CLS
-CALL "%~dp0scripts\update.bat"
+CALL "%~dp0stack\scripts\update.bat"
 CALL cmd
+PAUSE

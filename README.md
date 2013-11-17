@@ -32,6 +32,14 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - [SlimerJS][6]
 - [CasperJS][7]
 
+Aditionally, the following tools binaries are provided
+
+- cURL
+- Putty
+- SFTP client
+- 7zip
+- Bash with *UNIX binaries (port to Win32)
+
 See [PACKAGES][2] file for more information about versions
 
 ## Installation
@@ -49,13 +57,17 @@ See [PACKAGES][2] file for more information about versions
 
 `TODO`
 
-## TODO list
+## TODO/WISH list
 
-- Better `environment` configuration documentation 
-- Read `ini` config instead of use environment variables from node scripts
+- Improve configuration documentation 
+- Read `ini` config instead of write and read environment variables from node scripts
+- Self-contained Git?
+- Support more packages pre-requisites (others SCM, specific binaries)
+- Performs all the setup and configuration from node scripts
+- Better isolation for environment variables
 
 [1]: https://sourceforge.net/projects/yawds/files/latest/download
-[2]: https://github.com/adesisnetlife/yawds/blob/master/environment/PACKAGES.md
+[2]: https://github.com/adesisnetlife/yawds/blob/master/environment/stack/PACKAGES.md
 [3]: http://nodejs.org
 [4]: http://rubylang.org
 [5]: http://phantomjs.org

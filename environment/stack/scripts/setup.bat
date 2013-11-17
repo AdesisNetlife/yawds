@@ -1,9 +1,9 @@
 @ECHO OFF
-:: Do not run this file manually!
+:: do not run this file manually!
 
 IF EXIST "%YAWDS_HOME%\config\user.ini" GOTO END 
 
-IF NOT EXIST "%YAWDS_HOME%\config" MKDIR "%YAWDS_HOME%\config\user.ini"
+IF NOT EXIST "%YAWDS_HOME%\config" MKDIR "%YAWDS_HOME%\config"
 
 ECHO.
 IF DEFINED YAWDS_CONF_INSTALL_MESSAGE (

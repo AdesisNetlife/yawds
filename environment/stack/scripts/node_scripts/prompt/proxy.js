@@ -38,7 +38,7 @@ function promptHost(done) {
 		store.http_proxy = getProxyVar('HTTP_PROXY')
 		store.https_proxy = getProxyVar('HTTPS_PROXY') || getProxyVar('HTTP_PROXY') 
 		if (getProxyVar('NO_PROXY')) {
-			store.node_proxy = getProxyVar('NO_PROXY')
+			store.no_proxy = getProxyVar('NO_PROXY')
 		}
 		return done()
 	}

@@ -45,8 +45,7 @@ function promptPassword(done) {
 	})
 }
 
-function outputIni(done) {
+function outputIni() {
 	writeIni(filepath, store, 'auth')
-	done()
 	exit()
 }

@@ -7,18 +7,24 @@ if (!filepath) {
   util.fail('File path argument required')
 }
 
-function getFile() {
+function getHttpProxyVariables() {
 	var uri
 	var proxy = util.parseIni(filepath).proxy
 	var variables = []
 	var supported = [ 'http_proxy', 'https_proxy', 'no_proxy' ]
 	
-	if (proxy && proxy.user && proxy.password) {
+	if (proxy) {
 		for (var name in proxy) {
-			if (proxy.hasOwnProperty(name) && name in suported) {
-				uri = url.parse(name)
-				uri.auth = proxy.user + ':' + proxy.password
-				variables.push(url.format(name))
+			if (proxy.hasOwnProperty(name) && supported.indexOf(name) !== -1 && proxy[name]) {
+				if (name === 'no_proxy') {
+					variables.push(name + '=' + proxy[name])
+					continue;
+				}
+				uri = url.parse(proxy[name])
+				if (!uri.auth && proxy.user && proxy.password) {
+					uri.auth = proxy.user + ':' + proxy.password
+				}
+				variables.push(name + '=' + url.format(uri))
 			}
 		}
 	}
@@ -27,9 +33,7 @@ function getFile() {
 
 util.echo(
 	util.generateBatch(
-		util.generateVars(
-			util.parseIni(filepath)
-		)
+		getHttpProxyVariables()
 	)
 )
 
