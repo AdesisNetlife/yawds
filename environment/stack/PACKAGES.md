@@ -1,4 +1,4 @@
-# Packages stack
+# Packages
 
 - NodeJS 0.10.22
 - PhantomJS 1.9.2
