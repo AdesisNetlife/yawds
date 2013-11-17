@@ -1,0 +1,6 @@
+.DS_Store
+thumbs.db
+environment/config
+environment/workspace
+temp
+node_modules
