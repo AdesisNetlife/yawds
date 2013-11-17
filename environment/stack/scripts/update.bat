@@ -5,10 +5,6 @@ SETLOCAL
 CALL "%~dp0set_env.bat"
 CALL "%~dp0env_config.bat"
 
-IF [%1]==[--confirm] (
-	SET yawds_from_start=1
-)
-
 IF [%YAWDS_CONF_UPDATE_ENABLED%]==[0] (
 	ECHO Environment update is disabled
 	GOTO END
@@ -20,13 +16,14 @@ IF NOT DEFINED YAWDS_CONF_UPDATE_CHECK_URL (
 	GOTO END
 )
 
-IF DEFINED yawds_from_start (
+IF [%1]==[--confirm] (
 	GOTO UPDATE
 )
+SET yawds_from_start=1
 
 SET /P confirm_update=Do you want to check for updates? [y/n]: 
 IF NOT [%confirm_update%]==[y] (
-	ECHO Cancaled
+	ECHO Canceled
 	GOTO END
 )
 
@@ -135,9 +132,9 @@ IF [%YAWDS_UPDATE_DOWNLOAD_AUTH%]==[1] SET require_auth=1
 IF [%YAWDS_CONF_UPDATE_CHECK_URL_AUTH%]==[1] SET require_auth=1
 
 IF [%require_auth%]==[1] (
-	CALL wget -nv --progress=bar "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
+	CALL wget --progress=bar "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
 ) ELSE (
-	CALL wget -nv --progress=bar -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
+	CALL wget --progress=bar -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
 )
 IF NOT ERRORLEVEL 0 (
 	ECHO Download error

@@ -46,18 +46,13 @@ function generateVars(config, subprefix) {
 	if (typeof config !== 'object') return []
 
 	function scapeReservedChars(string) {
+		// /\^|\&|\<|\>|\||\'|\`|\,|\(|\)/g
 		string = string
-			.replace(/\^|\&|\<|\>|\||\'|\`|\,|\;|\(|\)/g, function (match) {
+			.replace(/\^|\&/g, function (match) {
 				return '^' + match
-			})
-			.replace(/\[|\]\"/g, function (match) {
-				return '\\' + match
 			})
 			.replace(/\!/g, function () {
 				return '^^!'
-			})
-			.replace(/\%/g, function () {
-				return '%%'
 			})
 		return string
 	}
