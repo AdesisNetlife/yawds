@@ -8,5 +8,7 @@ environment/stack/ruby
 environment/stack/phantomjs
 environment/stack/tools
 environment/stack/casperjs
+scripts/releases
 temp
+.sh
 node_modules
