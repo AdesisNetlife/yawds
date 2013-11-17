@@ -1,6 +1,6 @@
 # yawds
 
-Another yet Web development stack environment for unlucky Web developers
+> Yet another Windows development stack environment for unlucky Web developers
 
 ### Usage
 
