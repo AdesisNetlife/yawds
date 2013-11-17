@@ -49,7 +49,6 @@ See [PACKAGES][2] file for more information about versions
 2. Uncompress the `zip` wherever you want
 
 3. Run `start.cmd`
-> The fisrt time you run the environment, a setup process and provisioning is done 
 
 4. Start coding!
 
