@@ -39,7 +39,7 @@ function promptUser(done) {
 }
 
 function promptPassword(done) {
-	prompt.password('Enter your password:' , function (err, value) {
+	prompt.password('Enter your password (masked):' , function (err, value) {
 		store.password = value
 		done()
 	})

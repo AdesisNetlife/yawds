@@ -1,4 +1,4 @@
 version=0.1.0
-download=https://downloads.sourceforge.net/project/xampp/XAMPP%20Windows/1.8.2/xampp-portable-win32-1.8.2-2-VC9.zip?r=&ts=1384713253&use_mirror=kent
+download=http://sourceforge.net/projects/filezilla/files/FileZilla_Client/3.7.3/FileZilla_3.7.3_win32.zip/download
 release_notes_url=https://raw.github.com/adesisnetlife/yawds/master/RELEASE
 download_auth = true

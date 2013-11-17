@@ -22,6 +22,10 @@ CALL "%~dp0config.bat"
 :: performs the environment provisioning if required
 CALL "%~dp0provision.bat"
 
+IF [%YAWDS_CONF_UPDATE_CHECK_ON_STARTUP%]==[1] (
+	CALL "%~dp0update.bat" "--confirm"
+)
+
 IF NOT EXIST "%YAWDS_HOME%\workspace" (
 	MKDIR "%YAWDS_HOME%\workspace"
 )
