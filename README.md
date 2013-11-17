@@ -38,7 +38,7 @@ See [PACKAGES][2] file for more information about versions
 
 1. [Download][1] the latest version
 
-2. Uncompress the `zip` whereever you want
+2. Uncompress the `zip` wherever you want
 
 3. Run `start.cmd`
 
