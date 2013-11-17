@@ -19,7 +19,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - Complete software stack for modern Web development
 - OS dependencies checker
 - Full isolation from the OS
-- Support for packages updates
+- Support for updates
 - Supports both 32 and 64 bits OS
 - Supports Windows XP or greater
 - Easy to use from continous integration servers
