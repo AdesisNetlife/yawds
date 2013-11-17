@@ -4,6 +4,7 @@ SETLOCAL
 
 CALL "%~dp0set_env.bat"
 CALL "%~dp0env_config.bat"
+SET CWD=%CD%
 
 IF [%YAWDS_CONF_UPDATE_ENABLED%]==[0] (
 	ECHO Environment update is disabled
@@ -17,9 +18,12 @@ IF NOT DEFINED YAWDS_CONF_UPDATE_CHECK_URL (
 )
 
 IF [%1]==[--confirm] (
-	GOTO UPDATE
+	GOTO SET_CONFIRM
 )
+
+:SET_CONFIRM
 SET yawds_from_start=1
+GOTO UPDATE
 
 SET /P confirm_update=Do you want to check for updates? [y/n]: 
 IF NOT [%confirm_update%]==[y] (
@@ -81,12 +85,15 @@ IF NOT DEFINED YAWDS_UPDATE_DOWNLOAD (
 )
 
 IF [%YAWDS_VERSION%]==[0.1.2] (
+	IF DEFINED yawds_from_start (
+		GOTO END
+	)
 	ECHO You are on the latest version: %YAWDS_VERSION%
 	ECHO Nothing to update
 	GOTO END
 )
 
-ECHO.
+IF DEFINED yawds_from_start ECHO. 
 ECHO There is a new version available: %YAWDS_UPDATE_VERSION%
 ECHO.
 
@@ -140,16 +147,59 @@ IF NOT ERRORLEVEL 0 (
 	ECHO Download error
 	GOTO END
 )
+IF NOT EXIST "%TEMP%\yawds-latest-win32.zip" (
+	ECHO File do not exist
+	GOTO END
+)
 
 ECHO.
 ECHO Download completed!
 ECHO.
 
+:: backup file
+SET backup_file=stack-%YAWDS_VERSION%-%date:~6,4%-%date:~3,2%-%date:~0,2%-%time:~0,2%%time:~3,2%.zip
 SET /P backup=Do you want to backup the current environment? [Y/n]: 
 IF [%backup%]==[y] (
-	ECHO Backing files...
-
+	IF NOT EXIST "%YAWDS_HOME%\backup" MKDIR "%YAWDS_HOME%\backup"
+	CD "%YAWDS_HOME%\stack"
+	CALL 7za -mx7 -o "%YAWDS_HOME%\backup" a "%backup_file%" *
+	IF NOT ERRORLEVEL 0 (
+		ECHO.
+		ECHO Error while creating the backup...
+		GOTO END_ERROR
+	)
+	ECHO.
+	ECHO Backup created succesfully in:
+	ECHO %YAWDS_HOME%\backup\
+	ECHO.
 )
+
+MOVE /Y "%YAWDS_HOME%\stack" "%YAWDS_HOME%\stack_old"
+IF NOT ERRORLEVEL 0 (
+	ECHO Cannot write files due to running processes
+	ECHO Be sure there is no processes still running
+	ECHO You can exec stack\tools\cprocess.exe in to see the running processes
+	ECHO.
+	GOTO END_ERROR
+)
+
+ECHO.
+ECHO Installing new version...
+ECHO.
+MKDIR "%YAWDS_HOME%\stack"
+CD "%YAWDS_HOME%\stack"
+:: install new version
+CALL 7za e "%TEMP%\yawds-latest-win32.zip"
+IF NOT ERRORLEVEL 0 (
+	ECHO An error while extracting happends
+	ECHO Restoring old version...
+	MOVE /Y "%YAWDS_HOME%\stack_old" "%YAWDS_HOME%\stack"
+	GOTO END_ERROR
+)
+
+:: removing old version
+DEL /F /Q /S "%YAWDS_HOME%\stack_old"
+
 
 :VERSION_ERROR
 ECHO Cannot check the latest version: error while reading the ini file
@@ -160,12 +210,13 @@ IF EXIST output.log DEL /F /Q output.log
 GOTO CLEAN
 
 :END_ERROR
-ECHO Cannot update
+ECHO Cannot update. Try it again
 
 :CLEAN
 IF EXIST "%TEMP%\yawds_update.bat" DEL /Q /F "%TEMP%\yawds_update.bat"
 IF EXIST "%TEMP%\yawds_latest.ini" DEL /Q /F "%TEMP%\yawds_latest.ini"
-IF EXIST  "%TEMP%\release_notes" DEL /Q /F "%TEMP%\release_notes"
+IF EXIST "%TEMP%\release_notes" DEL /Q /F "%TEMP%\release_notes"
+IF EXIST "%TEMP%\yawds-latest-win32.zip" DEL /Q /F "%TEMP%\yawds-latest-win32.zip"
 IF DEFINED yawds_from_start CLS
 
 ENDLOCAL
