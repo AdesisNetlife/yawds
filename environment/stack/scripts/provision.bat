@@ -11,10 +11,12 @@ IF EXIST "%YAWDS_STACK_PATH%\provision.lock" (
 	)
 )
 
-ECHO %YAWDS_CONF_GENERAL_SHORTNAME% - Package provisioning
+ECHO %YAWDS_CONF_GENERAL_SHORTNAME% packages provisioning
 ECHO.
-ECHO Coffee time! this may take some minutes...
-ECHO.
+IF NOT EXIST "%YAWDS_STACK_PATH%\provision.lock" (
+	ECHO Coffee time! this may take some minutes...
+	ECHO.
+)
 
 CALL node "%~dp0node_scripts\install_packages" "%YAWDS_STACK_PATH%\packages.ini" > "%~dp0temp\install_packages.bat"
 IF NOT ERRORLEVEL 0 GOTO CONFIG_ERROR
