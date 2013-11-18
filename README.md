@@ -32,7 +32,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - Configurable (you can adapt it for your projects escenarios)
 - Complete software stack for modern Web development
 - OS dependencies checker
-- Full isolation from the OS
+- Fully isolated from the OS
 - Support for updates
 - Supports both 32 and 64 bits OS
 - Supports Windows XP or greater
