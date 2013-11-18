@@ -41,6 +41,6 @@ ECHO put %file% >> "%~dp0upload.sh"
 ECHO quit >> "%~dp0upload.sh"
 
 CALL "%~dp0..\environment\stack\tools\psftp" %user%@%server% -l %user% -pw %password% -b upload.sh
-DEL "%~dp0upload.sh"
+DEL /Y /F "%~dp0upload.sh"
 
 ENDLOCAL
