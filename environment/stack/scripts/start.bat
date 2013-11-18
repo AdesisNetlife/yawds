@@ -13,10 +13,10 @@ IF DEFINED YAWDS_CONF_GENERAL_PROMPT (
 	SET prompt=%YAWDS_CONF_GENERAL_PROMPT%
 )
 
-:: environement setup process, if required
-CALL "%~dp0setup.bat"
 :: check OS requisites
 CALL "%~dp0requisites.bat"
+:: environement setup process, if required
+CALL "%~dp0setup.bat"
 :: load user-specific config
 CALL "%~dp0config.bat"
 :: performs the environment provisioning if required
