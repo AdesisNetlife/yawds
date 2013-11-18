@@ -28,7 +28,7 @@ You can easily uptade the whole software stack automatically when a new version 
 
 To update it, you just need to run `update.cmd`, and then magic things happends!
 
-## Customize it for your project
+## Customization
 
 `TODO`
 
