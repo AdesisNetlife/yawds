@@ -21,7 +21,7 @@ IF NOT DEFINED YAWDS_CONF_UPDATE_CHECK_URL (
 
 IF [%1]==[--confirm] (
 	GOTO SET_NOCONFIRM
-) 
+)
 GOTO ASK_CONFIRMATION
 
 :SET_NOCONFIRM
@@ -130,6 +130,7 @@ IF DEFINED yawds_from_start (
 	ECHO.
 	ECHO To proceed with the update, you must run update.cmd
 	ECHO.
+	PAUSE
 	GOTO END
 )
  

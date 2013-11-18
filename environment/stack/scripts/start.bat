@@ -23,7 +23,7 @@ CALL "%~dp0config.bat"
 CALL "%~dp0provision.bat"
 
 IF [%YAWDS_CONF_UPDATE_CHECK_ON_STARTUP%]==[1] (
-	CALL "%~dp0update.bat" "--confirm"
+	CALL "%~dp0update.bat" --confirm
 )
 
 IF NOT EXIST "%YAWDS_HOME%\workspace" (
