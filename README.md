@@ -36,22 +36,32 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 5. Start coding!
 
+## Packages
+
+By default, the following packages will be installed on the provisioning process
+
+- bower@latest 
+- yeoman@latest
+- grunt-cli@latest
+- compass@latest
+
 ## Update
 
 You can easily uptade the whole software stack automatically when a new version is available
 
-To update it, you just need to run `update.cmd`
+By default, `yawds` checks for new versions on each start, 
+however you can do it manually running `update.cmd`
 
 > Note that the environment only will update stack/ directory. 
-> All the user configuration or packages installed will remain across updates
+> All the user configuration or packages installed will remain between updates
 
 ## Customization
 
-If you are a devops or an architect, `YAWDS` allows you to configure the environment
+If you are a devops or an architect, `yawds` allows you to configure the environment
 for your own projects.
 
 You can provide a pre-configured environment for a specific execution environment,
-for example, setting a pre-defined http proxy
+for example, setting a pre-defined http proxy or packages provisioning
 
 ### Create your custom environment
 
@@ -65,18 +75,16 @@ for example, setting a pre-defined http proxy
 
 5. Run `scripts\release.bat`
 
-Aditionally, you should cuStomize `VERSION` and `CHANGELOG` files with you own project information
-
-`TODO: create an utility to automate this process`
+Aditionally, you should customize `VERSION` and `CHANGELOG` files with you own project 
+information and software livecycle
 
 #### Update
 
-`YAWDS` provides support for automatic software stack updates, checking new versions from 
-a remote `ini` file accesible via HTTP
+`yawds` provides support for automatic software stack updates, checking new versions from 
+a remote `ini` file accesible via HTTP.
+When a new version is available, `yawds` ask the user to process with the update 
 
-When a new version exists, `YAWDS` ask the user to process with the update 
-
-You should create a well-formed `ini` file like a version manifest file, 
+You should create a well-formed `ini` like version manifest file, 
 and make it avaiable from a HTTP server
 
 Here is a complete file example with the supported values:
@@ -110,7 +118,7 @@ See [PACKAGES][2] file for more information about versions
 
 If you experiment some issue, please feel free to [open][9] an Github issue reporting it
 
-Note that `YAWDS` still beta version 
+Note that `yawds` still beta version 
 
 ## TODO/WISH list
 
@@ -120,7 +128,7 @@ Note that `YAWDS` still beta version
 - Support more packages pre-requisites (others SCM, specific binaries)
 - Performs all the setup and configuration from node scripts
 - Better isolation in batch script variables 
-- Create a development kit for enviroment customization
+- Create a devkit for enviroment customization automation
 
 ## License
 
