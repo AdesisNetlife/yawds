@@ -6,9 +6,9 @@
 
 ## About
 
-A modern and portable Web development stack environment for the f*ing Windows OS
+A modern, complete, portable and configurable Web development stack environment for the f*ing Windows OS
 
-If you are a lucky developer, you should use [FrontStack](https://github.com/frontstack/frontstack) instead of YAWDS
+If you are a lucky developer, you should use [FrontStack](https://github.com/frontstack/frontstack) instead
 
 ## Installation
 
@@ -18,7 +18,9 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 3. Run `start.cmd`
 
-4. Start coding!
+4. Put your code in the `workspace/` directory
+
+5. Start coding!
 
 ## Customize it for your project
 
