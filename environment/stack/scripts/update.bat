@@ -22,19 +22,11 @@ IF NOT DEFINED YAWDS_CONF_UPDATE_CHECK_URL (
 IF [%1]==[--confirm] (
 	GOTO SET_NOCONFIRM
 )
-GOTO ASK_CONFIRMATION
+GOTO UPDATE
 
 :SET_NOCONFIRM
 SET yawds_from_start=1
 GOTO UPDATE
-
-:ASK_CONFIRMATION
-SET /P confirm_update=Do you want to check for updates? [y/n]: 
-IF NOT [%confirm_update%]==[y] (
-	ECHO Canceled
-	GOTO END
-)
-ECHO.
 
 :UPDATE
 
