@@ -59,13 +59,13 @@ for example, setting a pre-defined http proxy
 
 2. [Download][1] the latest version
 
-3. Unzip it in `environment/` from the cloned repository (overrides all the contents)
+3. Unzip it in `environment/` overriding the directory in the cloned repository
 
 4. Customize `environment.ini` and `packages.ini` (both are commented in-line)
 
 5. Run `scripts\release.bat`
 
-Aditionally, you should cutomize `VERSION` and `CHANGELOG` files with you own project information
+Aditionally, you should cuStomize `VERSION` and `CHANGELOG` files with you own project information
 
 `TODO: create an utility to automate this process`
 
