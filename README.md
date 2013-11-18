@@ -47,9 +47,46 @@ To update it, you just need to run `update.cmd`
 
 ## Customization
 
-If you are a devops or architect, `YAWDS` 
+If you are a devops or an architect, `YAWDS` allows you to configure the environment
+for your own projects.
 
+You can provide a pre-configured environment for a specific execution environment,
+for example, setting a pre-defined http proxy
 
+### Create your custom environment
+
+1. Clone/fork this repository
+
+2. [Download][1] the latest version
+
+3. Unzip it in `environment/` from the cloned repository (overrides all the contents)
+
+4. Customize `environment.ini` and `packages.ini` (both are commented in-line)
+
+5. Run `scripts\release.bat`
+
+Aditionally, you should cutomize `VERSION` and `CHANGELOG` files with you own project information
+
+`TODO: create an utility to automate this process`
+
+#### Update
+
+`YAWDS` provides support for automatic software stack updates, checking new versions from 
+a remote `ini` file accesible via HTTP
+
+When a new version exists, `YAWDS` ask the user to process with the update 
+
+You should create a well-formed `ini` file like a version manifest file, 
+and make it avaiable from a HTTP server
+
+Here is a complete file example with the supported values:
+```ini
+version=0.1.0
+download=http://downloads.mycompany.com/environment-latest.zip
+release_notes_url=https://downloads.mycompany.com/environment-release-notes.txt
+download_auth = false
+post_update_script=scripts\post_update.bat
+```
 
 ## Software stack
 
@@ -69,6 +106,12 @@ Aditionally, the following tools binaries are provided
 
 See [PACKAGES][2] file for more information about versions
 
+## Issues
+
+If you experiment some issue, please feel free to [open][9] an Github issue reporting it
+
+Note that `YAWDS` still beta version 
+
 ## TODO/WISH list
 
 - Improve configuration documentation 
@@ -77,6 +120,7 @@ See [PACKAGES][2] file for more information about versions
 - Support more packages pre-requisites (others SCM, specific binaries)
 - Performs all the setup and configuration from node scripts
 - Better isolation in batch script variables 
+- Create a development kit for enviroment customization
 
 ## License
 
@@ -92,3 +136,4 @@ Released under [MIT][8] license
 [6]: http://slimerjs.org
 [7]: http://casperjs.org
 [8]: http://opensource.org/licenses/MIT
+[9]: https://github.com/AdesisNetlife/yawds/issues/new
