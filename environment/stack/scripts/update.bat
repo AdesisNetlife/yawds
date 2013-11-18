@@ -100,7 +100,6 @@ IF [%YAWDS_VERSION%]==[0.1.2] (
 
 IF DEFINED yawds_from_start ECHO. 
 ECHO There is a new version available: %YAWDS_UPDATE_VERSION%
-ECHO.
 
 IF DEFINED YAWDS_UPDATE_RELEASE_NOTES (
 	ECHO.
