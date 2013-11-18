@@ -55,7 +55,7 @@ function promptHost(done) {
 		store.https_proxy = value
 		prompt.confirm('Do you want to define the "no_proxy" variable? [y/N]:', function (err, value) {
 			if (value) {
-				prompt.prompt('Enter the no_proxy hosts (comma separated): ', function (err, value) {
+				prompt.prompt('Enter the no_proxy value (hosts comma separated): ', function (err, value) {
 					store.no_proxy = value
 					done()
 				})
