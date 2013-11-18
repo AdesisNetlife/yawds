@@ -43,7 +43,7 @@ You can easily uptade the whole software stack automatically when a new version 
 To update it, you just need to run `update.cmd`
 
 > Note that the environment only will update stack/ directory. 
-> All the user config or packages installed will remain across updates
+> All the user configuration or packages installed will remain across updates
 
 ## Customization
 
