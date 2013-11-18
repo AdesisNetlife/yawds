@@ -5,7 +5,7 @@ IF NOT EXIST "%YAWDS_STACK_PATH%\packages.ini" GOTO END
 IF [%YAWDS_PKG_PROVISION_ENABLED%]==[0] GOTO END
 
 :: todo: isolate node and ruby packages verification
-IF EXIST "%YAWDS_STACK_PATH%\status.log" (
+IF EXIST "%YAWDS_STACK_PATH%\provision.lock" (
 	IF NOT [%YAWDS_PKG_PROVISION_KEEP_UPDATE%]==[1] (
 		GOTO END
 	)
@@ -32,7 +32,7 @@ IF NOT ERRORLEVEL 0 (
 	)
 )
 
-ECHO provisioned=true > "%YAWDS_STACK_PATH%\status.log"
+ECHO provisioned=true > "%YAWDS_STACK_PATH%\provision.lock"
 
 ECHO.
 ECHO Provisioning completed!

@@ -17,4 +17,4 @@ IF NOT EXIST "%~dp0releases" MKDIR "%~dp0releases"
 
 CD "%~dp0..\environment\"
 
-CALL "%~dp0..\environment\stack\tools\7za" -mx7 -o ..\scritps\releaes a yawds-%version%-win32.zip *
+CALL "%~dp0..\environment\stack\tools\7za" -mx7 -o"..\scritps\releaes a yawds-%version%-win32.zip" * -!cprocess.cfg -x!thumbs.db -x!temp -x!provision.lock

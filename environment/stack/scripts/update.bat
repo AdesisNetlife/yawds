@@ -1,10 +1,12 @@
 @ECHO OFF
+:: do not run this script manually
+
 SETLOCAL 
 :: todo: support for authtentication
 
-CALL "%~dp0set_env.bat"
-CALL "%~dp0env_config.bat"
-SET CWD=%CD%
+IF DEFINED YAWDS_CONF_GENERAL_CONSOLE_COLOR (
+	COLOR %YAWDS_CONF_GENERAL_CONSOLE_COLOR%
+)
 
 IF [%YAWDS_CONF_UPDATE_ENABLED%]==[0] (
 	ECHO Environment update is disabled
@@ -18,18 +20,21 @@ IF NOT DEFINED YAWDS_CONF_UPDATE_CHECK_URL (
 )
 
 IF [%1]==[--confirm] (
-	GOTO SET_CONFIRM
-)
+	GOTO SET_NOCONFIRM
+) 
+GOTO ASK_CONFIRMATION
 
-:SET_CONFIRM
+:SET_NOCONFIRM
 SET yawds_from_start=1
 GOTO UPDATE
 
+:ASK_CONFIRMATION
 SET /P confirm_update=Do you want to check for updates? [y/n]: 
 IF NOT [%confirm_update%]==[y] (
 	ECHO Canceled
 	GOTO END
 )
+ECHO.
 
 :UPDATE
 
@@ -41,7 +46,7 @@ IF [%YAWDS_CONF_UPDATE_CHECK_URL_AUTH%]==[1] (
 		GOTO END
 	)
 	ECHO Authentication is required to update
-	CALL node "%~dp0node_scripts\prompt\update_auth" "%TEMP%\yawds_update.bat" "update"
+	CALL node "%YAWDS_STACK_PATH%\scripts\node_scripts\prompt\update_auth" "%TEMP%\yawds_update.bat" "update"
 	IF NOT ERRORLEVEL 0 (
 		ECHO Error setting authtentication credentials
 		GOTO END_ERROR
@@ -70,7 +75,7 @@ IF NOT ERRORLEVEL 0 (
 	GOTO END_ERROR
 )
 
-CALL node "%~dp0node_scripts\ini2batch" "%TEMP%\yawds_latest.ini" "update" > "%TEMP%\yawds_update.bat"
+CALL node "%YAWDS_STACK_PATH%\scripts\node_scripts\ini2batch" "%TEMP%\yawds_latest.ini" "update" > "%TEMP%\yawds_update.bat"
 CALL "%TEMP%\yawds_update.bat"
 IF NOT ERRORLEVEL 0 GOTO CONFIG_ERROR
 
@@ -120,6 +125,14 @@ IF DEFINED YAWDS_UPDATE_RELEASE_NOTES_URL (
 	)
 )
 
+:: require to run from update.cmd (due to windows files blocking issues)
+IF DEFINED yawds_from_start (
+	ECHO.
+	ECHO To proceed with the update, you must run update.cmd
+	ECHO.
+	GOTO END
+)
+ 
 SET /P confirm_update=Do you want to process with the update? [y/n]: 
 IF NOT [%confirm_update%]==[y] (
 	ECHO Canceled
@@ -129,6 +142,7 @@ IF NOT [%confirm_update%]==[y] (
 ECHO.
 ECHO IMPORTANT: 
 ECHO You must close all the running processes before continue
+ECHO You can use stack\tools\cprocess.exe to see the running processes
 ECHO.
 
 PAUSE
@@ -156,28 +170,38 @@ ECHO.
 ECHO Download completed!
 ECHO.
 
-:: backup file
-SET backup_file=stack-%YAWDS_VERSION%-%date:~6,4%-%date:~3,2%-%date:~0,2%-%time:~0,2%%time:~3,2%.zip
+:: backup filename
+FOR /F "tokens=* delims= " %%a IN ("%TIME:~0,2%") DO SET hour=%%a
+FOR /F "tokens=* delims= " %%a IN ("%TIME:~3,2%") DO SET minute=%%a
+SET backup_file=stack-%YAWDS_VERSION%-%date:~6,4%-%date:~3,2%-%date:~0,2%-%hour%%minute%.zip
+
+:: backup the current stack environment
 SET /P backup=Do you want to backup the current environment? [Y/n]: 
 IF [%backup%]==[y] (
 	IF NOT EXIST "%YAWDS_HOME%\backup" MKDIR "%YAWDS_HOME%\backup"
 	CD "%YAWDS_HOME%\stack"
-	CALL 7za -mx7 -o "%YAWDS_HOME%\backup" a "%backup_file%" *
+	:: create tarball
+	CALL 7za -mx7 a "%backup_file%" *
 	IF NOT ERRORLEVEL 0 (
 		ECHO.
 		ECHO Error while creating the backup...
 		GOTO END_ERROR
 	)
+	:: move to backup folder
+	MOVE /Y "%backup_file%" "%YAWDS_HOME%\backup"
+	
 	ECHO.
 	ECHO Backup created succesfully in:
 	ECHO %YAWDS_HOME%\backup\
 	ECHO.
+	PAUSE
 )
 
 MOVE /Y "%YAWDS_HOME%\stack" "%YAWDS_HOME%\stack_old"
-IF NOT ERRORLEVEL 0 (
-	ECHO Cannot write files due to running processes
-	ECHO Be sure there is no processes still running
+IF NOT EXIST "%YAWDS_HOME%\stack_old" (
+	ECHO.
+	ECHO ERROR: cannot write new files
+	ECHO Be sure there is not any blocking process still running
 	ECHO You can exec stack\tools\cprocess.exe in to see the running processes
 	ECHO.
 	GOTO END_ERROR
@@ -186,8 +210,10 @@ IF NOT ERRORLEVEL 0 (
 ECHO.
 ECHO Installing new version...
 ECHO.
+
 MKDIR "%YAWDS_HOME%\stack"
 CD "%YAWDS_HOME%\stack"
+
 :: install new version
 CALL 7za e "%TEMP%\yawds-latest-win32.zip"
 IF NOT ERRORLEVEL 0 (
@@ -198,11 +224,15 @@ IF NOT ERRORLEVEL 0 (
 )
 
 :: removing old version
-DEL /F /Q /S "%YAWDS_HOME%\stack_old"
+::DEL /F /Q /S "%YAWDS_HOME%\stack_old"
 
+ECHO.
+ECHO Environment stack updated succesfully
+GOTO END
 
 :VERSION_ERROR
 ECHO Cannot check the latest version: error while reading the ini file
+ECHO Cannot update. Try it again
 
 :END
 ECHO.
@@ -217,6 +247,10 @@ IF EXIST "%TEMP%\yawds_update.bat" DEL /Q /F "%TEMP%\yawds_update.bat"
 IF EXIST "%TEMP%\yawds_latest.ini" DEL /Q /F "%TEMP%\yawds_latest.ini"
 IF EXIST "%TEMP%\release_notes" DEL /Q /F "%TEMP%\release_notes"
 IF EXIST "%TEMP%\yawds-latest-win32.zip" DEL /Q /F "%TEMP%\yawds-latest-win32.zip"
-IF DEFINED yawds_from_start CLS
+IF DEFINED yawds_from_start (
+	CLS
+) ELSE (
+	PAUSE
+)
 
 ENDLOCAL

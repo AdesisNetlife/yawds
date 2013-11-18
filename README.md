@@ -2,7 +2,7 @@
 
 > Yet another Windows development stack environment for unlucky Web developers
 
-`work still in process`
+`still a beta version`
 
 ## About
 
@@ -63,7 +63,7 @@ See [PACKAGES][2] file for more information about versions
 - Self-contained Git?
 - Support more packages pre-requisites (others SCM, specific binaries)
 - Performs all the setup and configuration from node scripts
-- Better isolation for environment variables
+- Better isolation in batch script variables 
 
 [1]: https://sourceforge.net/projects/yawds/files/latest/download
 [2]: https://github.com/adesisnetlife/yawds/blob/master/environment/stack/PACKAGES.md
