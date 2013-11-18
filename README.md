@@ -12,7 +12,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 ## Features
 
-- Easy to use and install
+- Easy to use 
 - Fully portable
 - Automatically packages provisioning
 - Configurable (you can configure it for your projects)
@@ -88,6 +88,7 @@ You should create a well-formed `ini` like version manifest file,
 and make it avaiable from a HTTP server
 
 Here is a complete file example with the supported values:
+
 ```ini
 version=0.1.0
 download=http://downloads.mycompany.com/environment-latest.zip
@@ -104,7 +105,7 @@ post_update_script=scripts\post_update.bat
 - [SlimerJS][6]
 - [CasperJS][7]
 
-Aditionally, the following tools binaries are provided
+Aditionally, the following tools binaries are also provided
 
 - cURL
 - Putty
@@ -118,7 +119,7 @@ See [PACKAGES][2] file for more information about versions
 
 If you experiment some issue, please feel free to [open][9] an Github issue reporting it
 
-Note that `yawds` still beta version 
+Note that `yawds` is still a beta version 
 
 ## TODO/WISH list
 

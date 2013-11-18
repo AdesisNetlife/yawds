@@ -26,6 +26,7 @@ IF NOT EXIST "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node" (
 	MKDIR "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node"
 )
 
+CALL npm config set --global userconfig "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\.npmrc" 
 CALL npm config set --global prefix "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node" 
 CALL npm config set --global strict-ssl false
 
