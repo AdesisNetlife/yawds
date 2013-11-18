@@ -10,6 +10,20 @@ A modern, complete, portable and configurable Web development stack environment 
 
 If you are a lucky developer, you should use [FrontStack](https://github.com/frontstack/frontstack) instead
 
+## Features
+
+- Easy to use and install
+- Fully portable
+- Automatically packages provisioning
+- Configurable (you can configure it for your projects)
+- Complete software stack for modern Web development and testing
+- OS dependencies checker
+- Fully isolated from the OS
+- Support for environment updates
+- Support both 32 and 64 bits OS
+- Support Windows XP or greater
+- Easy to use from continous integration servers
+
 ## Installation
 
 1. [Download][1] the latest version
@@ -24,27 +38,16 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 ## Update
 
-You can easily uptade the whole software stack automatically when a new version is available.
+You can easily uptade the whole software stack automatically when a new version is available
 
-To update it, you just need to run `update.cmd`, and then magic things happends!
+To update it, you just need to run `update.cmd`
+
+> Note that the environment only will update stack/ directory
+> All the user config or packages installed will remain across updates
 
 ## Customization
 
 `TODO`
-
-## Features
-
-- Easy to use and install
-- Fully portable
-- Automatically packages provisioning
-- Configurable (you can adapt it for your projects escenarios)
-- Complete software stack for modern Web development
-- OS dependencies checker
-- Fully isolated from the OS
-- Support for updates
-- Supports both 32 and 64 bits OS
-- Supports Windows XP or greater
-- Easy to use from continous integration servers
 
 ## Software stack
 
@@ -73,6 +76,12 @@ See [PACKAGES][2] file for more information about versions
 - Performs all the setup and configuration from node scripts
 - Better isolation in batch script variables 
 
+## License
+
+Copyright (C) 2013 Adesis Netfile S.L
+
+Released under [MIT][8] license
+
 [1]: https://sourceforge.net/projects/yawds/files/latest/download
 [2]: https://github.com/adesisnetlife/yawds/blob/master/environment/stack/PACKAGES.md
 [3]: http://nodejs.org
@@ -80,3 +89,4 @@ See [PACKAGES][2] file for more information about versions
 [5]: http://phantomjs.org
 [6]: http://slimerjs.org
 [7]: http://casperjs.org
+[8]: http://opensource.org/licenses/MIT

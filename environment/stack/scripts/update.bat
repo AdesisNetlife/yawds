@@ -204,12 +204,16 @@ ECHO.
 ECHO Installing new version...
 ECHO.
 
-MKDIR "%YAWDS_HOME%\stack"
-CD "%YAWDS_HOME%\stack"
+:: unzip directory
+IF EXIST "%TEMP%\yawds_latest%" (
+	DEL /F /Q /S "%TEMP%\yawds_latest%"
+)
+MKDIR "%TEMP%\yawds_latest%"
+CD "%TEMP%\yawds_latest"
 
 :: install new version
 CALL "%YAWDS_HOME%\stack_old\tools\7za.exe" -y e "%TEMP%\yawds-latest-win32.zip"
-IF NOT EXIST "%YAWDS_HOME%\stack" (
+IF NOT EXIST "%TEMP%\yawds_latest\stack" (
 	ECHO.
 	ECHO ERROR: cannot extract and write new files
 	ECHO Restoring old stack environment version...
@@ -218,12 +222,30 @@ IF NOT EXIST "%YAWDS_HOME%\stack" (
 	GOTO END_ERROR
 )
 
+MOVE /Y "%TEMP%\yawds_latest\stack" "%YAWDS_HOME%\stack"
+IF NOT EXIT "%YAWDS_HOME%\stack" (
+	ECHO.
+	ECHO ERROR: cannot write stack directory
+	ECHO Restoring old stack environment version...
+	ECHO.
+	MOVE /Y "%YAWDS_HOME%\stack_old" "%YAWDS_HOME%\stack"
+	GOTO END_ERROR)
+
 :: removing old version
 DEL /F /Q /S "%YAWDS_HOME%\stack_old"
+:: removing old version
+DEL /F /Q /S "%TEMP%\yawds_latest"
 
 ECHO.
 ECHO %YAWDS_CONF_GENERA_SHORTNAME% was updated succesfully!
 ECHO.
+
+IF DEFINED YAWDS_UPDATE_POST_UPDATE_SCRIPT (
+	IF EXIST "%YAWDS_HOME%\%YAWDS_UPDATE_POST_UPDATE_SCRIPT%" (
+		CALL "%YAWDS_HOME%\%YAWDS_UPDATE_POST_UPDATE_SCRIPT%"
+	)
+)
+
 GOTO END
 
 :VERSION_ERROR
