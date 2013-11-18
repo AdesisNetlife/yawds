@@ -22,6 +22,12 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 5. Start coding!
 
+## Update
+
+You can easily uptade the whole software stack automatically when a new version is available.
+
+To update it, you just need to run `update.cmd`, and then magic things happends!
+
 ## Customize it for your project
 
 `TODO`
