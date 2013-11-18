@@ -181,7 +181,7 @@ IF [%backup%]==[y] (
 	IF NOT EXIST "%YAWDS_HOME%\backup" MKDIR "%YAWDS_HOME%\backup"
 	CD "%YAWDS_HOME%\stack"
 	:: create tarball
-	CALL 7za -mx7 a "%backup_file%" *
+	CALL 7za -mx7 -y a "%backup_file%" *
 	IF NOT ERRORLEVEL 0 (
 		ECHO.
 		ECHO Error while creating the backup...
@@ -194,10 +194,11 @@ IF [%backup%]==[y] (
 	ECHO Backup created succesfully in:
 	ECHO %YAWDS_HOME%\backup\
 	ECHO.
+	CD "%YAWDS_HOME%"
 	PAUSE
 )
 
-MOVE /Y "%YAWDS_HOME%\stack" "%YAWDS_HOME%\stack_old"
+MOVE /Y "%YAWDS_HOME%\stack" "%YAWDS_HOME%\stack_old" > nul
 IF NOT EXIST "%YAWDS_HOME%\stack_old" (
 	ECHO.
 	ECHO ERROR: cannot write new files
@@ -215,19 +216,22 @@ MKDIR "%YAWDS_HOME%\stack"
 CD "%YAWDS_HOME%\stack"
 
 :: install new version
-CALL 7za e "%TEMP%\yawds-latest-win32.zip"
-IF NOT ERRORLEVEL 0 (
-	ECHO An error while extracting happends
-	ECHO Restoring old version...
+CALL "%YAWDS_HOME%\stack_old\tools\7za.exe" -y e "%TEMP%\yawds-latest-win32.zip"
+IF NOT EXIST "%YAWDS_HOME%\stack" (
+	ECHO.
+	ECHO ERROR: cannot extract and write new files
+	ECHO Restoring old stack environment version...
+	ECHO.
 	MOVE /Y "%YAWDS_HOME%\stack_old" "%YAWDS_HOME%\stack"
 	GOTO END_ERROR
 )
 
 :: removing old version
-::DEL /F /Q /S "%YAWDS_HOME%\stack_old"
+DEL /F /Q /S "%YAWDS_HOME%\stack_old"
 
 ECHO.
-ECHO Environment stack updated succesfully
+ECHO %YAWDS_CONF_GENERA_SHORTNAME% was updated succesfully!
+ECHO.
 GOTO END
 
 :VERSION_ERROR
@@ -236,7 +240,6 @@ ECHO Cannot update. Try it again
 
 :END
 ECHO.
-IF EXIST output.log DEL /F /Q output.log
 GOTO CLEAN
 
 :END_ERROR
@@ -247,10 +250,6 @@ IF EXIST "%TEMP%\yawds_update.bat" DEL /Q /F "%TEMP%\yawds_update.bat"
 IF EXIST "%TEMP%\yawds_latest.ini" DEL /Q /F "%TEMP%\yawds_latest.ini"
 IF EXIST "%TEMP%\release_notes" DEL /Q /F "%TEMP%\release_notes"
 IF EXIST "%TEMP%\yawds-latest-win32.zip" DEL /Q /F "%TEMP%\yawds-latest-win32.zip"
-IF DEFINED yawds_from_start (
-	CLS
-) ELSE (
-	PAUSE
-)
+IF DEFINED yawds_from_start CLS
 
 ENDLOCAL
