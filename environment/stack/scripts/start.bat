@@ -17,7 +17,7 @@ IF DEFINED YAWDS_CONF_GENERAL_PROMPT (
 CALL "%~dp0setup.bat"
 :: check OS requisites
 CALL "%~dp0requisites.bat"
-:: set user-specific config
+:: load user-specific config
 CALL "%~dp0config.bat"
 :: performs the environment provisioning if required
 CALL "%~dp0provision.bat"
