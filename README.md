@@ -99,6 +99,8 @@ download_auth = false
 post_update_script = scripts\post_update.bat
 ```
 
+> Only `zip` and `7z` compression formats are supported
+
 ## Software stack
 
 - [Node.js][3]
