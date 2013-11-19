@@ -2,9 +2,9 @@
 
 #### 0.1.0-rc2 (18/11/2013)
 
-- Added support for custom execution scripts from environment.ini
-- Update script improvements
-- General environment upgradements
+- Support for custom exection scripts and environment.ini
+- General update script improvements
+- Git configuring script big fixes
 
 #### 0.1.0-rc1 (17/11/2013)
 

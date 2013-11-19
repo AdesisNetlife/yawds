@@ -1,1 +1,4 @@
-First public beta version
+
+- Support for custom exection scripts and environment.ini
+- General update script improvements
+- Git configuring script big fixes
