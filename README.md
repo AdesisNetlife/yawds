@@ -69,7 +69,7 @@ for example, setting a pre-defined http proxy or packages provisioning
 
 2. [Download][1] the latest version
 
-3. Unzip it in `environment/` overriding the directory in the cloned repository
+3. Unzip it in `environment\` overriding the directory contents
 
 4. Customize `environment.ini` and `packages.ini` (both are commented in-line)
 
