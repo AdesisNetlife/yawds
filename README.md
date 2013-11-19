@@ -38,7 +38,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 ## Packages
 
-By default, the following packages will be installed on the provisioning process
+By default, the following packages will be installed in the provisioning process
 
 - bower@latest 
 - yeoman@latest
