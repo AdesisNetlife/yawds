@@ -25,6 +25,12 @@ CALL node "%~dp0node_scripts\prompt\git" "%YAWDS_HOME%\config\user.ini"
 
 IF NOT EXIST "%YAWDS_HOME%\config\user.ini" ECHO. > "%YAWDS_HOME%\config\user.ini"
 
+IF DEFINED YAWDS_CONF_SCRIPTS_AFTER_INSTALL (
+	IF EXIST "%YAWDS_CONF_SCRIPTS_AFTER_INSTALL%" (
+		CALL "%YAWDS_CONF_SCRIPTS_AFTER_INSTALL%"
+	)
+)
+
 ECHO.
 ECHO Environment setup success!
 ECHO.

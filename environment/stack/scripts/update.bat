@@ -8,11 +8,6 @@ IF DEFINED YAWDS_CONF_GENERAL_CONSOLE_COLOR (
 	COLOR %YAWDS_CONF_GENERAL_CONSOLE_COLOR%
 )
 
-IF [%YAWDS_CONF_UPDATE_ENABLED%]==[0] (
-	ECHO Environment update is disabled
-	GOTO END
-)
-
 IF NOT DEFINED YAWDS_CONF_UPDATE_CHECK_URL (
 	ECHO Missing update.check_url config value in environment.ini
 	ECHO Cannot checkout for new versions
@@ -29,6 +24,13 @@ SET yawds_from_start=1
 GOTO UPDATE
 
 :UPDATE
+
+IF [%YAWDS_CONF_UPDATE_ENABLED%]==[0] (
+	IF NOT DEFINED yawds_from_start (
+		ECHO Environment update is disabled
+	)
+	GOTO END
+)
 
 IF NOT EXIST "%TEMP%" MKDIR "%TEMP%"
 

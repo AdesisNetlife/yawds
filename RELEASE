@@ -1,3 +1,4 @@
 - Support for custom exection scripts and environment.ini
 - General update script improvements
 - Git configuring script big fixes
+- Better proxy configuration and detection

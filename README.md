@@ -6,7 +6,7 @@
 
 ## About
 
-A modern, complete, portable and configurable Web development stack environment for the f*ing Windows OS
+A modern, complete, portable and configurable Web development stack environment for the Windows OS
 
 If you are a lucky developer, you should use [FrontStack](https://github.com/frontstack/frontstack) instead
 
@@ -22,7 +22,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - Support for environment updates
 - Support both 32 and 64 bits OS
 - Support Windows XP or greater
-- Easy to use from continous integration servers
+- Easy to use from continous integration servers and deployment environments
 
 ## Installation
 

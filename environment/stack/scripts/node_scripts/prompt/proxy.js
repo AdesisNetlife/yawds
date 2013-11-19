@@ -22,9 +22,21 @@ series([
 ])
 
 function confirmProxy(done) {
+	if (exists(env['no_proxy'])) {
+		store.no_proxy = env['no_proxy']
+	}
+	if (exists(env['https_proxy']) && !exists(getProxyVar('HTTPS_PROXY'))) {
+		store.https_proxy = env['https_proxy']
+	}
+	if (exists(env['http_proxy']) && !exists(getProxyVar('HTTP_PROXY'))) {
+		store.http_proxy = env['http_proxy']
+		exit()
+	}
+
 	if (exists(getInstallVar('FORCE_PROXY'))) {
 		return done()
 	}
+
 	prompt.confirm('Are you behind a Web proxy [Y/n]:', function (err, value) {
 		if (!value) {
 			exit()
@@ -34,10 +46,12 @@ function confirmProxy(done) {
 }
 
 function promptHost(done) {
-	if (exists(getProxyVar('HTTP_PROXY')) || exists(getProxyVar('HTTPS_PROXY'))) {
+	if (exists(getProxyVar('HTTP_PROXY'))) {
 		store.http_proxy = getProxyVar('HTTP_PROXY')
-		store.https_proxy = getProxyVar('HTTPS_PROXY') || getProxyVar('HTTP_PROXY') 
-		if (getProxyVar('NO_PROXY')) {
+		if (exists(getProxyVar('HTTPS_PROXY'))) {
+			store.https_proxy = getProxyVar('HTTPS_PROXY') || getProxyVar('HTTP_PROXY') 
+		}
+		if (exists(getProxyVar('NO_PROXY'))) {
 			store.no_proxy = getProxyVar('NO_PROXY')
 		}
 		return done()
@@ -49,10 +63,41 @@ function promptHost(done) {
 		}
 		return string
 	}
+
+	series([
+		proxyServer,
+		httpsProxyServer,
+		noProxy,
+		done
+	])
 	
-	prompt.prompt('Enter the web proxy server:', { validator: validUrl }, function (err, value) {
-		store.http_proxy = value
-		store.https_proxy = value
+	function proxyServer(done) {
+		prompt.prompt('Enter the web proxy server:', { validator: validUrl }, function (err, value) {
+			store.http_proxy = value
+			done()
+		})
+	}
+
+	function httpsProxyServer(done) {
+		if (exists(store.https_proxy)) {
+			done()
+		}
+		prompt.confirm('Do you want to use an HTTPS proxy also? [y/N]:', function (err, value) {
+			if (value) {
+				prompt.prompt('Enter the HTTPS web proxy server: ', { validator: validUrl }, function (err, value) {
+					store.https_proxy = value
+					done()
+				})
+			} else {
+				done()
+			}
+		})
+	}
+
+	function noProxy(done) {
+		if (exists(store.no_proxy)) {
+			done()
+		}
 		prompt.confirm('Do you want to define the "no_proxy" variable? [y/N]:', function (err, value) {
 			if (value) {
 				prompt.prompt('Enter the no_proxy value (hosts comma separated): ', function (err, value) {
@@ -63,7 +108,8 @@ function promptHost(done) {
 				done()
 			}
 		})
-	})
+	}
+
 }
 
 function proxyAuth(done) {
@@ -73,6 +119,11 @@ function proxyAuth(done) {
 	if (!exists(getInstallVar('ASK_PROXY_AUTH'))) {
 		return done()
 	}
+
+	if (/\:/.test(url.parse(store.http_proxy).auth)) {
+		done()
+	}
+
 	prompt.confirm('The web proxy requires authentication? [y/n]:', function (err, value) {
 		if (!value) {
 			return outputIni()
