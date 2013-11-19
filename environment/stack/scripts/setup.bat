@@ -1,5 +1,5 @@
 @ECHO OFF
-:: do not run this file manually!
+:: do not run this file manually, use start.bat instead
 
 IF EXIST "%YAWDS_HOME%\config\user.ini" GOTO END 
 

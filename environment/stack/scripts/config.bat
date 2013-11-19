@@ -2,11 +2,6 @@
 :: Do not run this script manually!
 
 IF EXIST "%YAWDS_HOME%\config\user.ini" (
-	:: set proxy environment variables, if defined in user.ini 
-	::CALL node "%~dp0node_scripts\set_proxy" "%YAWDS_HOME%\config\user.ini" > "%~dp0temp\proxy.bat"
-	::IF ERRORLEVEL 1 GOTO CONFIG_ERROR
-	::CALL "%~dp0temp\proxy.bat"
-
 	:: set auth variables, if defined in user.ini
 	CALL node "%~dp0node_scripts\set_user_vars" "%YAWDS_HOME%\config\user.ini" "auth" > "%~dp0temp\user_auth.bat"
 	IF ERRORLEVEL 1 GOTO CONFIG_ERROR
