@@ -87,6 +87,8 @@ When a new version is available, `yawds` ask the user to process with the update
 You should create a well-formed `ini` like version manifest file, 
 and make it avaiable from a HTTP server
 
+The file must called `VERSION` and it must exists in the `stack/` folder
+
 Here is a complete file example with the supported values:
 
 ```ini
