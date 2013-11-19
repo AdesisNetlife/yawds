@@ -40,7 +40,7 @@ function promptUser(done) {
 }
 
 function promptEmail(done) {
-	prompt.password('Enter your user email for Git (e.g: me@company.net):' , function (err, value) {
+	prompt.prompt('Enter your user email for Git (e.g: me@company.net):' , function (err, value) {
 		store.email = value
 		done()
 	})
