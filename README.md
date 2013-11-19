@@ -90,11 +90,11 @@ and make it avaiable from a HTTP server
 Here is a complete file example with the supported values:
 
 ```ini
-version=0.1.0
-download=http://downloads.mycompany.com/environment-latest.zip
-release_notes_url=https://downloads.mycompany.com/environment-release-notes.txt
+version = 0.1.0
+download = http://downloads.mycompany.com/environment-latest.zip
+release_notes_url = https://downloads.mycompany.com/environment-release-notes.txt
 download_auth = false
-post_update_script=scripts\post_update.bat
+post_update_script = scripts\post_update.bat
 ```
 
 ## Software stack
