@@ -12,10 +12,10 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 ## Features
 
-- Easy to use 
-- Fully portable
-- Automatically packages provisioning
-- Configurable (you can configure it for your projects)
+- Easy to use
+- Portable
+- Automatic packages provisioning
+- Fully configurable for your projects
 - Complete software stack for modern Web development and testing
 - OS dependencies checker
 - Fully isolated from the OS
