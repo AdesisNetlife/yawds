@@ -21,9 +21,7 @@ CALL node "%~dp0node_scripts\prompt\auth" "%YAWDS_HOME%\config\user.ini"
 :: proxy config and authentication
 CALL node "%~dp0node_scripts\prompt\proxy" "%YAWDS_HOME%\config\user.ini"
 :: git config config and authentication
-IF [%YAWDS_CONF_REQUISITES_GIT%]==[1] (
-	CALL node "%~dp0node_scripts\prompt\git" "%YAWDS_HOME%\config\user.ini"
-)
+CALL node "%~dp0node_scripts\prompt\git" "%YAWDS_HOME%\config\user.ini"
 
 IF NOT EXIST "%YAWDS_HOME%\config\user.ini" ECHO. > "%YAWDS_HOME%\config\user.ini"
 

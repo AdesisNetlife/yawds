@@ -21,7 +21,7 @@ function confirmGit(done) {
 	if (!exists(envVar('REQUISITES_GIT'))) {
 		return exit()
 	}
-	if (!exists(envVar('INSTALL_ASK_AUTH'))) {
+	if (!exists(envVar('INSTALL_ASK_GIT'))) {
 		return exit()
 	}
 	prompt.confirm('Do you want to configure Git? [Y/n]:', function (err, value) {
@@ -33,21 +33,21 @@ function confirmGit(done) {
 }
 
 function promptUser(done) {
-	prompt.prompt('Enter your Git user name (e.g: Philip Morris):', function (err, value) {
+	prompt.prompt('Enter your user name for Git (e.g: Philip Morris):', function (err, value) {
 		store.username = value
 		done()
 	})
 }
 
 function promptEmail(done) {
-	prompt.password('Enter your Git user email (e.g: me@company.net):' , function (err, value) {
+	prompt.password('Enter your user email for Git (e.g: me@company.net):' , function (err, value) {
 		store.email = value
 		done()
 	})
 }
 
 function promptCredentialStore(done) {
-	prompt.confirm('Do you want to use Git credentials helper [Y/n]:' , function (err, value) {
+	prompt.confirm('Do you want to use Git credentials storage [Y/n]:' , function (err, value) {
 		if (!value) {
 			store.credentials = 'true'
 			outputIni()
