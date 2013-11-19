@@ -10,7 +10,7 @@ var filepath = process.argv[2]
 var envVar = util.envPartial('YAWDS_CONF') 
 
 series([
-	confirmAuth,
+	confirmGit,
 	promptUser,
 	promptEmail,
 	promptCredentialStore,
