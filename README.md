@@ -18,7 +18,8 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - Fully configurable for your projects
 - Complete software stack for modern Web development and testing
 - OS dependencies checker
-- Fully isolated from the OS
+- Auto-configured based on your existent environment variables
+- Great isolation from the OS
 - Support for environment updates
 - Support both 32 and 64 bits OS
 - Support Windows XP or greater
