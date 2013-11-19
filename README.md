@@ -58,7 +58,7 @@ however you can do it manually running `update.cmd`
 ## Customization
 
 If you are a devops or an architect, `yawds` allows you to configure the environment
-for your own projects.
+for your own projects
 
 You can provide a pre-configured environment for a specific execution environment,
 for example, setting a pre-defined http proxy or packages provisioning
