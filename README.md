@@ -66,7 +66,7 @@ By default, the following packages will be installed in the provisioning process
 
 You can configure it from the `package.ini` file
 
-## Update
+## Updating the software stack
 
 You can easily uptade the whole software stack automatically when a new version is available
 
