@@ -116,9 +116,6 @@ function proxyAuth(done) {
 	if (getInstallVar('ASK_PROXY_AUTH') === '0') {
 		return exit()
 	}
-	if (!exists(getInstallVar('ASK_PROXY_AUTH'))) {
-		return done()
-	}
 
 	if (/\:/.test(url.parse(store.http_proxy).auth)) {
 		done()
@@ -129,11 +126,12 @@ function proxyAuth(done) {
 			return outputIni()
 		}
 		if (env['YAWDS_USER'] && env['YAWDS_PASSWORD']) {
-			prompt.confirm('The proxy auth credentials for the proxy? [y/n]:', function (err, value) {
+			prompt.confirm('The proxy auth credentials are shared? [y/n]:', function (err, value) {
 				if (value) {
 					store.user = env['YAWDS_USER']
 					store.password = env['YAWDS_USER']
 				}
+				done()
 			})
 		} else {
 			done()

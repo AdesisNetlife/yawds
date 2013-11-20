@@ -20,7 +20,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - OS dependencies checker
 - Auto-configured based on your existent environment variables
 - Great isolation from the OS
-- Support for environment updates
+- Support for environment updates with keeping all the user stuff
 - Support both 32 and 64 bits OS
 - Support Windows XP or greater
 - Easy to use from continous integration servers and deployment environments
@@ -46,6 +46,8 @@ By default, the following packages will be installed in the provisioning process
 - grunt-cli@latest
 - compass@latest
 
+You can configure it from the `package.ini` file
+
 ## Update
 
 You can easily uptade the whole software stack automatically when a new version is available
@@ -58,8 +60,7 @@ however you can do it manually running `update.cmd`
 
 ## Customization
 
-If you are a devops or an architect, `yawds` allows you to easily configure the environment
-for your projects
+If you are a devops guy or an architect, `yawds` allows you to provide and easily configure a development environment for the projects you own
 
 You can provide a pre-configured environment for a specific execution environment,
 for example, setting a pre-defined http proxy or packages provisioning
@@ -70,14 +71,96 @@ for example, setting a pre-defined http proxy or packages provisioning
 
 2. [Download][1] the latest version
 
-3. Unzip it in `environment\` overriding the directory contents
+3. Unzip it in `environment\` overriding (or erase it, preferably) the directory contents 
 
 4. Customize `environment.ini` and `packages.ini` (both are commented in-line)
 
 5. Run `scripts\release.bat`
 
-Aditionally, you should customize `VERSION` and `CHANGELOG` files with you own project 
-information and software livecycle
+Aditionally, you may customize `VERSION` and `CHANGELOG` files with you own project 
+information and customized version
+
+`TODO: create a dev kit to automate the above`
+
+#### Configuration files
+
+There are two configuration files: `environment.ini` and `packages.ini`
+
+Here are both files in-line commented
+
+##### environment.ini
+
+```ini
+[general]
+name = YAWDS development environment
+shortname = YAWDS
+prompt = [yawds %YAWDS_VERSION%] $P $_$G$S
+console_color = 2
+
+[requisites]
+;; requires git must be installed in the system
+git = true
+
+[install]
+;; display a custom welcome message on install process
+message = Welcome to YAWSD development environment
+;; set true if the user computer must be authenticated 
+;; to access to network resources, like source repositories
+force_auth = false
+;; set true if the user computer will be behind a Web proxy
+force_proxy = false
+
+[install.ask]
+;; ask the user about his network auth credentials
+auth = false
+;auth_confirm = Do you want to enter your <company> auth credentials?
+;auth_username = Please, enter your <company>'s user credentials
+;; ask the user about proxy auth credentials
+proxy_auth = true
+;; ask to configure git config (user, email and credentials storage)
+git = true
+
+[proxy]
+;; from this section you can set by default the web proxy 
+;; configuration, avoiding to ask the user to enter it
+;http_proxy=http://proxy:3128
+;https_proxy=http://ssl.proxy:3128
+;no_proxy=.company,.google.com
+
+[update]
+enabled = true
+check_url = https://raw.github.com/AdesisNetlife/yawds/master/environment/stack/VERSION
+check_url_auth = false
+check_on_startup = true
+
+[scripts]
+;; custom execution scripts, with relative path from stack/ directory
+;after_start=scripts\post_start.bat
+;after_install=scripts\post_install.bat
+```
+
+##### package.ini
+
+```ini
+;; define the relative path for node or ruby packages installtion
+;; you probably do not need to change this option
+install_dir = packages
+
+[provision]
+;; enable/disable packages provisioning
+enabled = true
+;; this option allows to force to update Node/Ruby packages 
+;; from latest versions on each environment start
+keep_updated = false
+
+[npm]
+bower = latest
+grunt-cli = latest
+yo = latest
+
+[gem]
+compass = latest
+```
 
 #### Update
 
