@@ -1,5 +1,5 @@
 {
-  "name": "yawds-ini-reader",
+  "name": "yawds-node-scripts",
   "version": "0.1.0",
   "dependencies": {
     "ini": "~1.1.0",
