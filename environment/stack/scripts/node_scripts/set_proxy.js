@@ -12,7 +12,7 @@ function getHttpProxyVariables() {
 	var proxy = util.parseIni(filepath).proxy
 	var variables = []
 	var supported = [ 'http_proxy', 'https_proxy', 'no_proxy' ]
-	
+
 	if (proxy) {
 		for (var name in proxy) {
 			if (proxy.hasOwnProperty(name) && supported.indexOf(name) !== -1 && proxy[name]) {

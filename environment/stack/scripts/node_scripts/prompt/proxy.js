@@ -68,7 +68,7 @@ function promptHost(done) {
 		proxyServer,
 		httpsProxyServer,
 		noProxy,
-		done
+		end
 	])
 	
 	function proxyServer(done) {
@@ -110,11 +110,15 @@ function promptHost(done) {
 		})
 	}
 
+	function end() {
+		done()
+	}
+
 }
 
 function proxyAuth(done) {
 	if (getInstallVar('ASK_PROXY_AUTH') === '0') {
-		return exit()
+		return outputIni()
 	}
 
 	if (/\:/.test(url.parse(store.http_proxy).auth)) {

@@ -48,9 +48,8 @@ function promptEmail(done) {
 
 function promptCredentialStore(done) {
 	prompt.confirm('Do you want to use Git credentials storage [Y/n]:' , function (err, value) {
-		if (!value) {
+		if (value) {
 			store.credentials = 'true'
-			outputIni()
 		}
 		done()
 	})
