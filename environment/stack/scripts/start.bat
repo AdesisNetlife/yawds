@@ -13,6 +13,8 @@ CALL "%~dp0setup.bat"
 CALL "%~dp0config.bat"
 :: performs the environment packages provisioning if enabled
 CALL "%~dp0provision.bat"
+:: define final post-processes env variables
+CALL "%~dp0post_set_env.bat"
 
 IF DEFINED YAWDS_CONF_GENERAL_CONSOLE_COLOR (
 	COLOR %YAWDS_CONF_GENERAL_CONSOLE_COLOR%

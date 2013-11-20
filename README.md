@@ -76,6 +76,12 @@ however you can do it manually running `update.cmd`
 > Note that the environment only will update stack/ directory. 
 > All the user configuration or packages installed will remain between updates
 
+## Usage from CI 
+
+To use the isolated environment variables from a continous integration server or
+for specific proposal where do you want to use the environment context, you should simply
+call from your batch the `use_env.bat` script, located in `~\stack\scripts\`
+
 ## Make it yours
 
 If you are a devops guy or an architect, `yawds` allows you to provide and easily configure a development environment for the projects you happy owns
