@@ -6,7 +6,7 @@
 
 ## About
 
-A modern, complete, portable and configurable Web development software stack environment for the Windows
+A modern, complete, portable and configurable Web development software stack environment solution for Windows
 
 If you are a lucky developer, you should use [FrontStack](https://github.com/frontstack/frontstack) instead
 
