@@ -56,11 +56,11 @@ IF NOT DEFINED YAWDS_UPDATE_USER (
 	ECHO Authentication required
 	GOTO END_ERROR
 )
-CALL wget -q -nv "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds_latest.ini" "%YAWDS_CONF_UPDATE_CHECK_URL%"
+CALL wget -t 2 --timeout 2 -q -nv "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds_latest.ini" "%YAWDS_CONF_UPDATE_CHECK_URL%"
 GOTO CONTINUE
 
 :CHECK_HTTP
-CALL wget -q -nv -O "%TEMP%\yawds_latest.ini" "%YAWDS_CONF_UPDATE_CHECK_URL%" 
+CALL wget wget -t 2 --timeout 2 -q -nv -O "%TEMP%\yawds_latest.ini" "%YAWDS_CONF_UPDATE_CHECK_URL%" 
 	
 :CONTINUE
 IF NOT ERRORLEVEL 0 (
@@ -103,9 +103,9 @@ IF DEFINED YAWDS_UPDATE_RELEASE_NOTES (
 )
 IF DEFINED YAWDS_UPDATE_RELEASE_NOTES_URL (
 	IF [%YAWDS_CONF_UPDATE_CHECK_URL_AUTH%]==[1] (
-		CALL wget -q "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\release_notes" %YAWDS_UPDATE_RELEASE_NOTES_URL%
+		CALL wget -t 2 --timeout 2 -q "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\release_notes" %YAWDS_UPDATE_RELEASE_NOTES_URL%
 	) ELSE (
-		CALL wget -q -O "%TEMP%\release_notes" "%YAWDS_UPDATE_RELEASE_NOTES_URL%"
+		CALL wget -t 2 --timeout 2 -q -O "%TEMP%\release_notes" "%YAWDS_UPDATE_RELEASE_NOTES_URL%"
 	)
 	IF EXIST "%TEMP%\release_notes" (
 		ECHO.
@@ -147,16 +147,17 @@ IF [%YAWDS_UPDATE_DOWNLOAD_AUTH%]==[1] SET require_auth=1
 IF [%YAWDS_CONF_UPDATE_CHECK_URL_AUTH%]==[1] SET require_auth=1
 
 IF [%require_auth%]==[1] (
-	CALL wget --progress=bar "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
+	CALL wget -t 2 --timeout 5 --progress=bar "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
 ) ELSE (
-	CALL wget --progress=bar -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
+	CALL wget -t 2 --timeout 5 --progress=bar -O "%TEMP%\yawds-latest-win32.zip" "%YAWDS_UPDATE_DOWNLOAD%"
 )
 IF NOT ERRORLEVEL 0 (
 	ECHO Download error
 	GOTO END
 )
 IF NOT EXIST "%TEMP%\yawds-latest-win32.zip" (
-	ECHO File do not exist
+	ECHO Download error: file do not exist
+	ECHO Check your network connectivity
 	GOTO END
 )
 
