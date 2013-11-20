@@ -37,6 +37,24 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 
 5. Start coding!
 
+## Software stack
+
+- [Node.js][3]
+- [Ruby][4]
+- [PhantomJS][5]
+- [SlimerJS][6]
+- [CasperJS][7]
+
+Aditionally, the following tools binaries are also provided
+
+- cURL
+- Putty
+- SFTP client
+- 7zip
+- Bash with *UNIX binaries (port to Win32)
+
+See [PACKAGES][2] file for more information about versions
+
 ## Packages
 
 By default, the following packages will be installed in the provisioning process
@@ -60,10 +78,11 @@ however you can do it manually running `update.cmd`
 
 ## Make it yours
 
-If you are a devops guy or an architect, `yawds` allows you to provide and easily configure a development environment for the projects you own
+If you are a devops guy or an architect, `yawds` allows you to provide and easily configure a development environment for the projects you happy owns
 
 You can provide a pre-configured environment for a specific execution environment,
-for example, setting a pre-defined http proxy or packages provisioning
+for example, setting a pre-defined http proxy or custom packages installation 
+according to your project software requirements
 
 ### Create your custom environment
 
@@ -84,7 +103,7 @@ information and customized version
 
 #### Configuration files
 
-There are two configuration files: `environment.ini` and `packages.ini`
+There are two configuration files you can adapt to your needs: `environment.ini` and `packages.ini`
 
 Here are both files in-line commented
 
@@ -168,10 +187,10 @@ compass = latest
 a remote `ini` file accesible via HTTP.
 When a new version is available, `yawds` ask the user to process with the update 
 
-You should create a well-formed `ini` like version manifest file, 
-and make it avaiable from a HTTP server
+You should create a well-formed `ini` like a version manifest file, 
+and make it available from a HTTP server
 
-The file must called `VERSION` and it must exists in the `stack/` folder
+The file must be called `VERSION` and it must exists in the `stack/` folder
 
 Here is a complete file example with the supported values:
 
@@ -184,24 +203,6 @@ post_update_script = scripts\post_update.bat
 ```
 
 > Only `zip` and `7z` compression formats are supported
-
-## Software stack
-
-- [Node.js][3]
-- [Ruby][4]
-- [PhantomJS][5]
-- [SlimerJS][6]
-- [CasperJS][7]
-
-Aditionally, the following tools binaries are also provided
-
-- cURL
-- Putty
-- SFTP client
-- 7zip
-- Bash with *UNIX binaries (port to Win32)
-
-See [PACKAGES][2] file for more information about versions
 
 ## Issues
 
