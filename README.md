@@ -140,7 +140,7 @@ proxy_auth = true
 git = true
 
 [proxy]
-;; from this section you can set by default the web proxy 
+;; from this section you can force set by default the web proxy 
 ;; configuration, avoiding to ask the user to enter it
 ;http_proxy=http://proxy:3128
 ;https_proxy=http://ssl.proxy:3128
