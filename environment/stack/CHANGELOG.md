@@ -1,11 +1,12 @@
 # Changelog 
 
-#### 0.1.0-rc2 (18/11/2013)
+#### 0.1.0 (20/11/2013)
 
 - Support for custom exection scripts and environment.ini
 - General update script improvements
-- Git configuring script big fixes
+- Git configuring script bug fixes
+- Better proxy configuration and detection
 
 #### 0.1.0-rc1 (17/11/2013)
 
-- Initial version
+- Initial RC version
