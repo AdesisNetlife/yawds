@@ -58,7 +58,7 @@ however you can do it manually running `update.cmd`
 > Note that the environment only will update stack/ directory. 
 > All the user configuration or packages installed will remain between updates
 
-## Customization
+## Make it yours
 
 If you are a devops guy or an architect, `yawds` allows you to provide and easily configure a development environment for the projects you own
 
