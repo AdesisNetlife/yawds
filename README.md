@@ -66,7 +66,7 @@ By default, the following packages will be installed in the provisioning process
 
 You can configure it from the `package.ini` file
 
-## Updating the software stack
+## Updates
 
 You can easily uptade the whole software stack automatically when a new version is available
 
@@ -187,7 +187,7 @@ yo = latest
 compass = latest
 ```
 
-#### Update
+#### Updating the software stack
 
 `yawds` provides support for automatic software stack updates, checking new versions from 
 a remote `ini` file accesible via HTTP.
