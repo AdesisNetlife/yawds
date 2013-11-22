@@ -1,5 +1,9 @@
 # Changelog 
 
+#### 0.1.0 (21/11/2013)
+
+- Fixed update script issue
+
 #### 0.1.0 (20/11/2013)
 
 - Support for custom exection scripts and environment.ini

@@ -2,3 +2,4 @@
 - General update script improvements
 - Git configuring script bug fixes
 - Better proxy configuration and detection
+- Fixed update script issue

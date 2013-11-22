@@ -1,4 +1,4 @@
-version = 0.1.0
+version = 0.1.1
 download = https://sourceforge.net/projects/yawds/files/latest/download
 release_notes_url = https://raw.github.com/adesisnetlife/yawds/master/RELEASE
 download_auth = false
