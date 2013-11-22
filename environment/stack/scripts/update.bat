@@ -209,7 +209,7 @@ ECHO.
 
 :: unzip directory
 IF EXIST "%TEMP%\yawds_latest%" (
-	DEL /F /Q /S "%TEMP%\yawds_latest%" > nul
+	DEL /Q /S "%TEMP%\yawds_latest%" > nul
 )
 MKDIR "%TEMP%\yawds_latest%"
 CD "%TEMP%\yawds_latest"
@@ -236,10 +236,10 @@ IF NOT EXIST "%YAWDS_HOME%\stack" (
 
 :: removing old version
 ECHO Removing old version...
-DEL /F /Q /S "%YAWDS_HOME%\stack_old" > nul
+DEL /Q /S "%YAWDS_HOME%\stack_old" > nul
 :: removing old version
 ECHO Cleaning download files...
-DEL /F /Q /S "%TEMP%\yawds_latest" > nul
+DEL /Q /S "%TEMP%\yawds_latest" > nul
 
 ECHO.
 ECHO %YAWDS_CONF_GENERAL_SHORTNAME% was updated succesfully!
