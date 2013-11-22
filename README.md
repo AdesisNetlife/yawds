@@ -22,7 +22,7 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 - Great isolation from the OS
 - Support for environment updates with keeping all the user stuff
 - Support both 32 and 64 bits OS
-- Support Windows XP or greater
+- Support Windows XP/Server 2003 or greater
 - Easy to use from continous integration servers and deployment environments
 
 ## Installation
@@ -65,6 +65,13 @@ By default, the following packages will be installed in the provisioning process
 - compass@latest
 
 You can configure it from the `package.ini` file
+
+#### Custom packages
+
+Aditionally, if you need to have custom packages that are not avalible from
+npm or gem, you should put it in `packages/`. 
+
+If your package has a `bin/` directory, it will be automatically available from %PATH%
 
 ## Updates
 
