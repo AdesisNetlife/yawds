@@ -1,5 +1,5 @@
 version = 0.1.0
-download = http://sourceforge.net/projects/filezilla/files/FileZilla_Client/3.7.3/FileZilla_3.7.3_win32.zip/download
+download = https://sourceforge.net/projects/yawds/files/latest/download
 release_notes_url = https://raw.github.com/adesisnetlife/yawds/master/RELEASE
 download_auth = false
 ;post_update_script = scripts\post_update.bat
