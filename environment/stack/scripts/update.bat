@@ -209,7 +209,7 @@ ECHO.
 
 :: unzip directory
 IF EXIST "%TEMP%\yawds_latest%" (
-	DEL /F /Q /S "%TEMP%\yawds_latest%"
+	DEL /F /Q /S "%TEMP%\yawds_latest%" > nul
 )
 MKDIR "%TEMP%\yawds_latest%"
 CD "%TEMP%\yawds_latest"
@@ -235,12 +235,14 @@ IF NOT EXIST "%YAWDS_HOME%\stack" (
 	GOTO END_ERROR)
 
 :: removing old version
-DEL /F /Q /S "%YAWDS_HOME%\stack_old"
+ECHO Removing old version...
+DEL /F /Q /S "%YAWDS_HOME%\stack_old" > nul
 :: removing old version
-DEL /F /Q /S "%TEMP%\yawds_latest"
+ECHO Cleaning download files...
+DEL /F /Q /S "%TEMP%\yawds_latest" > nul
 
 ECHO.
-ECHO %YAWDS_CONF_GENERA_SHORTNAME% was updated succesfully!
+ECHO %YAWDS_CONF_GENERAL_SHORTNAME% was updated succesfully!
 ECHO.
 
 IF DEFINED YAWDS_UPDATE_POST_UPDATE_SCRIPT (
@@ -263,10 +265,11 @@ GOTO CLEAN
 ECHO Cannot update. Try it again
 
 :CLEAN
-IF EXIST "%TEMP%\yawds_update.bat" DEL /Q /F "%TEMP%\yawds_update.bat"
-IF EXIST "%TEMP%\yawds_latest.ini" DEL /Q /F "%TEMP%\yawds_latest.ini"
-IF EXIST "%TEMP%\release_notes" DEL /Q /F "%TEMP%\release_notes"
-IF EXIST "%TEMP%\yawds-latest-win32.zip" DEL /Q /F "%TEMP%\yawds-latest-win32.zip"
+ECHO Cleaning temporary files...
+IF EXIST "%TEMP%\yawds_update.bat" DEL /Q /F "%TEMP%\yawds_update.bat" > nul
+IF EXIST "%TEMP%\yawds_latest.ini" DEL /Q /F "%TEMP%\yawds_latest.ini" > nul
+IF EXIST "%TEMP%\release_notes" DEL /Q /F "%TEMP%\release_notes" > nul
+IF EXIST "%TEMP%\yawds-latest-win32.zip" DEL /Q /F "%TEMP%\yawds-latest-win32.zip" > nul
 IF DEFINED yawds_from_start CLS
 
 ENDLOCAL
