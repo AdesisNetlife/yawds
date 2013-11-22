@@ -221,7 +221,7 @@ IF NOT EXIST "%TEMP%\yawds_latest\stack" (
 	ECHO ERROR: cannot extract and write new files
 	ECHO Restoring old stack environment version...
 	ECHO.
-	MOVE /Y "%YAWDS_HOME%\stack_old" "%YAWDS_HOME%\stack"
+	MOVE /Y "%YAWDS_HOME%\stack_old" "%YAWDS_HOME%\stack" > nul
 	GOTO END_ERROR
 )
 
