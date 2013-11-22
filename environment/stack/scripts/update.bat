@@ -226,7 +226,7 @@ IF NOT EXIST "%TEMP%\yawds_latest\stack" (
 )
 
 MOVE /Y "%TEMP%\yawds_latest\stack" "%YAWDS_HOME%\stack"
-IF NOT EXIT "%YAWDS_HOME%\stack" (
+IF NOT EXIST "%YAWDS_HOME%\stack" (
 	ECHO.
 	ECHO ERROR: cannot write stack directory
 	ECHO Restoring old stack environment version...
