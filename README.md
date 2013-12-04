@@ -2,8 +2,6 @@
 
 > Yet another Windows development stack environment for unlucky Web developers
 
-`still a beta version`
-
 ## About
 
 A modern, complete, portable and configurable Web development software stack environment for Windows
@@ -228,6 +226,7 @@ Note that `yawds` is still a beta version
 - Improve configuration documentation 
 - Read `ini` config instead of write and read environment variables from node scripts
 - Self-contained Git?
+- Add .netrc config support
 - Support more packages pre-requisites (others SCM, specific binaries)
 - Performs all the setup and configuration from node scripts
 - Better isolation in batch script variables 
