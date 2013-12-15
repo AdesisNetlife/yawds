@@ -247,3 +247,7 @@ Released under [MIT][8] license
 [7]: http://casperjs.org
 [8]: http://opensource.org/licenses/MIT
 [9]: https://github.com/AdesisNetlife/yawds/issues/new
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AdesisNetlife/yawds/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
