@@ -117,7 +117,7 @@ information and customized version
 There are two configuration files you can adapt to your needs: `environment.ini` and `packages.ini`
 
 Here are both files in-line commented.
-Note that you should comment the option you do not need
+Note that you should comment the options you do not need
 
 ##### environment.ini
 
