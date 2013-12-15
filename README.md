@@ -1,4 +1,4 @@
-# yawds
+# yawds [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AdesisNetlife/yawds/trend.png)](https://bitdeli.com/AdesisNetlife/yawds "Bitdeli Badge")
 
 > Yet another Windows development stack environment for unlucky Web developers
 
@@ -116,7 +116,8 @@ information and customized version
 
 There are two configuration files you can adapt to your needs: `environment.ini` and `packages.ini`
 
-Here are both files in-line commented
+Here are both files in-line commented.
+Note that you should comment the option you do not need
 
 ##### environment.ini
 
@@ -153,9 +154,9 @@ git = true
 [proxy]
 ;; from this section you can force set by default the web proxy 
 ;; configuration, avoiding to ask the user to enter it
-;http_proxy=http://proxy:3128
-;https_proxy=http://ssl.proxy:3128
-;no_proxy=.company,.google.com
+http_proxy=http://proxy:3128
+https_proxy=http://ssl.proxy:3128
+no_proxy=.company,.google.com
 
 [update]
 enabled = true
@@ -165,8 +166,8 @@ check_on_startup = true
 
 [scripts]
 ;; custom execution scripts, with relative path from stack/ directory
-;after_start=scripts\post_start.bat
-;after_install=scripts\post_install.bat
+after_start=scripts\post_start.bat
+after_install=scripts\post_install.bat
 ```
 
 ##### package.ini
@@ -221,12 +222,11 @@ If you experiment some issue, please feel free to [open][9] an Github issue repo
 
 Note that `yawds` is still a beta version 
 
-## TODO/WISH list
+## To Do/Wish list
 
 - Improve configuration documentation 
 - Read `ini` config instead of write and read environment variables from node scripts
 - Self-contained Git?
-- Add .netrc config support
 - Support more packages pre-requisites (others SCM, specific binaries)
 - Performs all the setup and configuration from node scripts
 - Better isolation in batch script variables 
@@ -234,7 +234,7 @@ Note that `yawds` is still a beta version
 
 ## License
 
-Copyright (C) 2013 Adesis Netfile S.L
+Copyright (C) 2013 Adesis Netfile S.L and contributors
 
 Released under [MIT][8] license
 
@@ -247,7 +247,3 @@ Released under [MIT][8] license
 [7]: http://casperjs.org
 [8]: http://opensource.org/licenses/MIT
 [9]: https://github.com/AdesisNetlife/yawds/issues/new
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AdesisNetlife/yawds/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
