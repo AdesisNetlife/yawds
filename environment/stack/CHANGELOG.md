@@ -1,6 +1,6 @@
 # Changelog 
 
-#### 0.1.2 (17/12/2013)
+#### 0.1.2 (15/12/2013)
 
 - Upgrade node.js to 0.10.23
 - Upgrade SlimerJS to 0.9.0
