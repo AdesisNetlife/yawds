@@ -1,5 +1,5 @@
 @ECHO OFF
-:: Do not run this script manually!
+:: do not run this script manually
 
 IF EXIST "%YAWDS_HOME%\config\user.ini" (
 	:: set auth variables, if defined in user.ini

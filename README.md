@@ -71,6 +71,9 @@ npm or gem, you should put it in `packages/`.
 
 If your package has a `bin/` directory, it will be automatically available from %PATH%
 
+Aditionally, if your package need to define specific environment variables, 
+you should simply create a file called `_setenv.bat` in the root folder of your package
+
 ## Updates
 
 You can easily uptade the whole software stack automatically when a new version is available
@@ -144,8 +147,8 @@ force_proxy = false
 [install.ask]
 ;; ask the user about his network auth credentials
 auth = false
-;auth_confirm = Do you want to enter your <company> auth credentials?
-;auth_username = Please, enter your <company>'s user credentials
+auth_confirm = Do you want to enter your <company> credentials?
+auth_username = Please, enter your <company>'s user credentials
 ;; ask the user about proxy auth credentials
 proxy_auth = true
 ;; ask to configure git config (user, email and credentials storage)
@@ -172,6 +175,10 @@ after_install=scripts\post_install.bat
 
 ##### package.ini
 
+Tell to `yawds` what should be instaled during the environment 
+provisining process.
+
+Example configuration file:
 ```ini
 ;; define the relative path for node or ruby packages installtion
 ;; you probably do not need to change this option
@@ -192,6 +199,9 @@ yo = latest
 [gem]
 compass = latest
 ```
+
+You can aditionally create a `provision.lock` file in the `stack\` directory if you want
+to permanently disable the provisioning or packages update process 
 
 #### Updating the software stack
 

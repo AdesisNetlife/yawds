@@ -26,19 +26,9 @@ SET RUBY_HOME=%YAWDS_STACK_PATH%\ruby
 :: update PATH
 SET PATH=%NODE_HOME%;%YAWDS_HOME_PHANTOMJS%;%RUBY_HOME%\bin;%YAWDS_HOME_CASPERJS%;%YAWDS_HOME_SLIMERJS%;%YAWDS_TOOLS_PATH%;%YAWDS_TOOLS_PATH%\win-bash;%PATH%
 
-:: auto discover binaries directories for aditional packages
-:: useful to automatically add them to be path accesible
-IF EXIST "%YAWDS_HOME%\packages" (
-	SET CWD=%CD%
-	CD "%YAWDS_HOME%\packages"
-	FOR /D %%i IN (*.*) DO (
-		IF NOT [%%i]==[ruby] (
-			IF EXIST "%YAWDS_HOME%\packages\%%i\bin" (
-				SET PATH=%%YAWDS_HOME%\packages\%%i\bin%;%PATH%
-			)
-		)
-	)
-	CD "%CWD%"
+:: alias to USERPROFILE, useful for Git
+IF NOT DEFINED HOME (
+	SET HOME=%USERPROFILE%
 )
 
 :END

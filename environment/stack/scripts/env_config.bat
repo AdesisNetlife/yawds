@@ -1,5 +1,5 @@
 @ECHO OFF
-:: Do not run this script manually!
+:: do not run this script manually
 
 IF NOT EXIST "%~dp0..\environment.ini" GOTO NOT_FOUND
 

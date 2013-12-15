@@ -1,5 +1,5 @@
 @ECHO OFF
-:: do not run this file manually
+:: do not run this script manually
 
 :: Check pre-requisites
 

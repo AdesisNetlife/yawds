@@ -14,7 +14,8 @@ IF EXIST "%YAWDS_STACK_PATH%\provision.lock" (
 ECHO %YAWDS_CONF_GENERAL_SHORTNAME% packages provisioning
 ECHO.
 IF NOT EXIST "%YAWDS_STACK_PATH%\provision.lock" (
-	ECHO Coffee time! this may take some minutes...
+	ECHO Package provisining process
+	ECHO coffee time! this may take some minutes...
 	ECHO.
 )
 

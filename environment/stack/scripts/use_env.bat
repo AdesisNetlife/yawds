@@ -1,5 +1,5 @@
 @ECHO OFF
-:: do not call this script manually
+:: do not run this script manually
 
 :: use this script to load specific environment variables
 :: useful for custom scripts and continous integration jobs

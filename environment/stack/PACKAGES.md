@@ -1,9 +1,9 @@
 # Packages
 
-- NodeJS 0.10.22
+- NodeJS 0.10.23
 - PhantomJS 1.9.2
-- SlimerJS 0.8.4
-- CasperJS 1.1-beta2
+- SlimerJS 0.9.0
+- CasperJS 1.1-beta3
 - Ruby 1.9.3
 
 ## Binary tools
