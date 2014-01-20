@@ -1,8 +1,3 @@
-- Upgrade node.js to 0.10.23
-- Upgrade SlimerJS to 0.9.0
-- Upgrade CasperJS to 1.1-beta3
-- Better packages binaries auto discovering
-- Support for custom env variables via _setenv.bat in packages.
-  Rationale: third party installed packages can define its own env vars
-- Set %HOME% like alias to %USERPROFILE% like Unix. 
-  Rationale: useful for Git and .netrcs
+- Upgrade Node.js to 0.10.24
+- Fix #2: Script sintax error in for structure under Windows 7/8
+- Fix #3: Update script issue: duplicated wget command
