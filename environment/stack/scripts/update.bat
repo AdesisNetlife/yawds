@@ -56,7 +56,7 @@ IF NOT DEFINED YAWDS_UPDATE_USER (
 	ECHO Authentication required
 	GOTO END_ERROR
 )
-pause
+
 CALL wget -t 2 --timeout 2 -q -nv "--http-user=%YAWDS_UPDATE_USER%" "--http-passwd=%YAWDS_UPDATE_PASSWORD%" -O "%TEMP%\yawds_latest.ini" "%YAWDS_CONF_UPDATE_CHECK_URL%"
 GOTO CONTINUE
 
