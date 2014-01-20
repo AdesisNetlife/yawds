@@ -1,5 +1,11 @@
 # Changelog 
 
+#### 0.1.3 (20/01/2014)
+
+- Upgrade Node.js to 0.10.24
+- Fix #2: Script sintax error in for structure under Windows 7/8
+- Fix #3: Update script issue: duplicated wget command
+
 #### 0.1.2 (15/12/2013)
 
 - Upgrade node.js to 0.10.23

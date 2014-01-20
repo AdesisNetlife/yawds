@@ -11,9 +11,9 @@ If you are a lucky developer, you should use [FrontStack](https://github.com/fro
 ## Features
 
 - Easy to use
-- Portable
+- Fully portable
 - Automatic packages provisioning
-- Fully configurable for your projects
+- Configurable for your specific project runtime scenario
 - Complete software stack for modern Web development and testing
 - OS dependencies checker
 - Auto-configured based on your existent environment variables
@@ -95,8 +95,8 @@ call from your batch the `use_env.bat` script, located in `~\stack\scripts\`
 If you are a devops guy or an architect, `yawds` allows you to provide and easily configure a development environment for the projects you happy owns
 
 You can provide a pre-configured environment for a specific execution environment,
-for example, setting a pre-defined http proxy or custom packages installation 
-according to your project software requirements
+for example, setting a pre-defined http proxy environment variable or custom packages installation 
+according to your project  packages dependencies
 
 ### Create your custom environment
 
@@ -110,17 +110,13 @@ according to your project software requirements
 
 5. Run `scripts\release.bat`
 
-Aditionally, you may customize `VERSION` and `CHANGELOG` files with you own project 
-information and customized version
-
-`TODO: create a dev kit to automate the above`
+You may customize `VERSION` and `CHANGELOG` files with you own project information
 
 #### Configuration files
 
 There are two configuration files you can adapt to your needs: `environment.ini` and `packages.ini`
 
-Here are both files in-line commented.
-Note that you should comment the options you do not need
+Note that you should comment or remove the options you do not need
 
 ##### environment.ini
 
@@ -240,11 +236,14 @@ Note that `yawds` is still a beta version
 - Support more packages pre-requisites (others SCM, specific binaries)
 - Performs all the setup and configuration from node scripts
 - Better isolation in batch script variables 
-- Create a devkit for enviroment customization automation
+
+## Contributors
+
+[Tomás Aparicio](https://github.com/h2non)
 
 ## License
 
-Copyright (C) 2013 Adesis Netfile S.L and contributors
+Copyright 2014 Adesis Netfile S.L and contributors
 
 Released under [MIT][8] license
 
