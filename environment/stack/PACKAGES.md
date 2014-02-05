@@ -1,6 +1,6 @@
 # Packages
 
-- NodeJS 0.10.24
+- NodeJS 0.10.25
 - PhantomJS 1.9.2
 - SlimerJS 0.9.0
 - CasperJS 1.1-beta3

@@ -222,6 +222,21 @@ post_update_script = scripts\post_update.bat
 
 > Only `zip` and `7z` compression formats are supported
 
+## Possible troubles
+
+#### Cannot find globally installed packages
+
+If you cannot use global installed packages, like grunt or bower, you must check if you have 
+`.npmrc` in your user home directory (`%USERPROFILE%`) and then remove the `prefix` option.
+
+This trouble seems to be related to npm, since it tries to resolve npmrc config files 
+in common paths like user home directory. 
+Yawds forces to define the `userconfig` config value on each environment start, 
+which defines the npm user config path, however npm always looks in the user home and load this config.
+
+You can't have cross-enviroment npm config options at this time, sorry!
+It was created the [#4](https://github.com/AdesisNetlife/yawds/issues/4) issue about this trouble
+
 ## Issues
 
 If you experiment some issue, please feel free to [open][9] an Github issue reporting it

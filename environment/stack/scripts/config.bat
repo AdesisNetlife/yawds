@@ -26,8 +26,10 @@ IF NOT EXIST "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node" (
 	MKDIR "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node"
 )
 
-CALL npm config set --global userconfig "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\.npmrc" 
-CALL npm config set --global prefix "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node" 
+:: force overriding npm config
+CALL npm config set --global globalconfig "%YAWDS_STACK_PATH%\node\etc\.npmrc"
+CALL npm config set --global userconfig "%YAWDS_HOME%\config\.npmrc"
+CALL npm config set --global prefix "%YAWDS_HOME%\%YAWDS_PKG_INSTALL_DIR%\node"
 CALL npm config set --global strict-ssl false
 
 :: gem specfic

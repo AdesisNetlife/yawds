@@ -1,3 +1,4 @@
-- Upgrade Node.js to 0.10.24
+- Upgrade Node.js to 0.10.25
+- Fix #4: force setting npm config file paths on each start
 - Fix #2: Script sintax error in for structure under Windows 7/8
 - Fix #3: Update script issue: duplicated wget command

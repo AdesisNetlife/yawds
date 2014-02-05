@@ -1,5 +1,10 @@
 # Changelog 
 
+#### 0.1.4 (05/02/2014)
+
+- Upgrade Node.js to 0.10.25
+- Fix #4: force setting npm config file paths on each start
+
 #### 0.1.3 (20/01/2014)
 
 - Upgrade Node.js to 0.10.24
