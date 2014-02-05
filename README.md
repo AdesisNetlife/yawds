@@ -224,7 +224,7 @@ post_update_script = scripts\post_update.bat
 
 ## Possible troubles
 
-#### Cannot find globally installed packages
+#### Cannot find global installed packages
 
 If you cannot use global installed packages, like grunt or bower, you must check if you have 
 `.npmrc` in your user home directory (`%USERPROFILE%`) and then remove the `prefix` option.
