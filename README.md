@@ -2,6 +2,12 @@
 
 > Yet another Windows development stack environment for unlucky Web developers
 
+<div style="text-align: center">
+  <a href="https://sourceforge.net/projects/yawds/files/latest/download">
+   <img width="120" src="http://oi62.tinypic.com/206zmud.jpg" />
+  </a>
+</div>
+
 ## About
 
 A modern, complete, portable and configurable Web development software stack environment for Windows
