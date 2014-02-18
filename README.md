@@ -4,7 +4,7 @@
 
 <div style="text-align: center">
   <a href="https://sourceforge.net/projects/yawds/files/latest/download">
-   <img width="120" src="http://oi62.tinypic.com/206zmud.jpg" />
+   <img width="200" src="http://oi62.tinypic.com/206zmud.jpg" />
   </a>
 </div>
 
